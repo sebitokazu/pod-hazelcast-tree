@@ -1,6 +1,6 @@
-package utils;
+package ar.edu.itba.pod.utils;
 
-import model.City;
+import ar.edu.itba.pod.model.City;
 
 public class NeighbourhoodCsvParser {
 

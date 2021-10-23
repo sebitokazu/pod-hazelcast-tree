@@ -1,8 +1,8 @@
-package query1;
+package ar.edu.itba.pod.query1;
 
 import com.hazelcast.mapreduce.Context;
 import com.hazelcast.mapreduce.Mapper;
-import model.Tree;
+import ar.edu.itba.pod.model.Tree;
 
 public class Query1Mapper implements Mapper<String, Tree, String, Integer> {
 

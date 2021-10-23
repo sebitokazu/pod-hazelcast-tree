@@ -1,4 +1,4 @@
-package query1;
+package ar.edu.itba.pod.query1;
 
 import com.hazelcast.mapreduce.Reducer;
 import com.hazelcast.mapreduce.ReducerFactory;

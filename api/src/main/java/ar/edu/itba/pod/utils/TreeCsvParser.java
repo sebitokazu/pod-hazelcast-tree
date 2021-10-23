@@ -1,8 +1,8 @@
-package utils;
+package ar.edu.itba.pod.utils;
 
 import com.hazelcast.core.IList;
-import model.City;
-import model.Tree;
+import ar.edu.itba.pod.model.City;
+import ar.edu.itba.pod.model.Tree;
 
 import java.io.IOException;
 import java.nio.file.Files;
