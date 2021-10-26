@@ -26,7 +26,4 @@ public class Query4Collator implements Collator<Map.Entry<String, Integer>, List
         }
         return results;
     }
-
-
-
 }
