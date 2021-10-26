@@ -38,4 +38,5 @@ public class ThreeGroup<K, V, S> {
     public int hashCode() {
         return Objects.hash(getLeft(), getMiddle(),getRight());
     }
+
 }

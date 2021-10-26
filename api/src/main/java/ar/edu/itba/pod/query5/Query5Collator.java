@@ -20,8 +20,9 @@ public class Query5Collator implements Collator<Map.Entry<ThreeGroup<String, Str
             if(!tensOfSpecies.containsKey(speciesAmountInTens)){
                 tensOfSpecies.put(speciesAmountInTens, new ArrayList<>());
             }
-            for(ThreeGroup<String, String, String> street : tensOfSpecies.get(speciesAmountInTens)){
-                results.add(new Query5Result(speciesAmountInTens, street.getLeft(), street.getRight(), street.getMiddle(), entry.getKey().getMiddle()));
+            for(ThreeGroup<String, String, String> group : tensOfSpecies.get(speciesAmountInTens)){
+                if(group.equals(entry.getKey()))
+                    results.add(new Query5Result(speciesAmountInTens, group.getLeft(), group.getRight(), group.getMiddle(), entry.getKey().getMiddle()));
             }
             tensOfSpecies.get(speciesAmountInTens).add(entry.getKey());
         }
