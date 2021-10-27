@@ -44,9 +44,15 @@ public class Query1Client {
             log.error("Error while parsing trees csv file.");
         }
 
-        Query1 query1 = new Query1(hazelcastInstance, treeIList);
-        query1.run();
+        Query1 query1 = new Query1(hazelcastInstance, treeIList, commandLine.getOptionValue("outPath") + "/query1.csv");
+        try {
+            query1.run();
+            log.info("Finished running Query1");
+        } catch (IOException e) {
+            log.error("Error on Query1. " + e.getMessage());
+        }
 
+        log.info("Shutting down Hazelcast client");
 
         hazelcastInstance.shutdown();
     }

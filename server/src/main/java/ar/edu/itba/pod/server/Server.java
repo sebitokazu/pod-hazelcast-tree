@@ -27,7 +27,7 @@ public class Server {
         JoinConfig joinConfig = new JoinConfig().setMulticastConfig(multicastConfig);
 
         InterfacesConfig interfacesConfig = new InterfacesConfig()
-                .setInterfaces(Collections.singletonList("192.168.1.*")).setEnabled(true); //TODO: Parametrizar direccion IP
+                .setInterfaces(Collections.singletonList("192.168.0.*")).setEnabled(true); //TODO: Parametrizar direccion IP
 
         NetworkConfig networkConfig = new
                 NetworkConfig().setInterfaces(interfacesConfig).setJoin(joinConfig);

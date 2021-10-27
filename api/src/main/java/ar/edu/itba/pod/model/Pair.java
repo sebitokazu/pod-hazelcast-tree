@@ -32,4 +32,9 @@ public class Pair<K,V> {
     public int hashCode() {
         return Objects.hash(getLeft(), getRight());
     }
+
+    @Override
+    public String toString() {
+        return left+";"+right;
+    }
 }
