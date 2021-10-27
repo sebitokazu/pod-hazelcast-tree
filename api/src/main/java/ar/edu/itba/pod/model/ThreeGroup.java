@@ -39,4 +39,15 @@ public class ThreeGroup<K, V, S> {
         return Objects.hash(getLeft(), getMiddle(),getRight());
     }
 
+    public boolean equalsLeft(K k){
+        return this.getLeft().equals(k);
+    }
+
+    public boolean equalsRight(S s){
+        return this.getRight().equals(s);
+    }
+
+    public boolean equalsMiddle(V v){
+        return this.getMiddle().equals(v);
+    }
 }

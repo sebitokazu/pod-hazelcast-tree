@@ -21,8 +21,14 @@ public class Query5Collator implements Collator<Map.Entry<ThreeGroup<String, Str
                 tensOfSpecies.put(speciesAmountInTens, new ArrayList<>());
             }
             for(ThreeGroup<String, String, String> group : tensOfSpecies.get(speciesAmountInTens)){
-                if(group.equals(entry.getKey()))
-                    results.add(new Query5Result(speciesAmountInTens, group.getLeft(), group.getRight(), group.getMiddle(), entry.getKey().getMiddle()));
+                if(group.equalsLeft(entry.getKey().getLeft()) && group.equalsRight(entry.getKey().getRight())) {
+                    String streetA = group.getMiddle();
+                    String streetB = entry.getKey().getMiddle();
+                    if (streetA.compareTo(streetB) > 0) //Pongo las calles alfabeticamente
+                        results.add(new Query5Result(speciesAmountInTens, group.getLeft(), group.getRight(), streetA, streetB));
+                    else
+                        results.add(new Query5Result(speciesAmountInTens, group.getLeft(), group.getRight(), streetB, streetA));
+                }
             }
             tensOfSpecies.get(speciesAmountInTens).add(entry.getKey());
         }
