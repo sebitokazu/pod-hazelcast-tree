@@ -9,6 +9,7 @@ import com.hazelcast.core.IMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Eliminar esta clase
 public class Client {
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
 
