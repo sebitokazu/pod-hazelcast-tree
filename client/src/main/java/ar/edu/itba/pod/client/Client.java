@@ -9,6 +9,7 @@ import com.hazelcast.core.IMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Eliminar esta clase
 public class Client {
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
 
@@ -25,7 +26,7 @@ public class Client {
 
         // Client Network Config
         ClientNetworkConfig clientNetworkConfig = new ClientNetworkConfig();
-        String[] addresses = {"192.168.1.51:5701"}; //TODO: Parametrizar direccion IP
+        String[] addresses = {"192.168.1.101:5701"}; //TODO: Parametrizar direccion IP
         clientNetworkConfig.addAddress(addresses);
         clientConfig.setNetworkConfig(clientNetworkConfig);
 

@@ -7,7 +7,7 @@ public class Query1ReducerFactory implements ReducerFactory<String, Integer, Int
 
     @Override
     public Reducer<Integer, Integer> newReducer(String s) {
-        return null;
+        return new Query1Reducer();
     }
 
     private class Query1Reducer extends Reducer<Integer, Integer> {
