@@ -1,4 +1,4 @@
-package ar.edu.itba.pod.utils;
+package ar.edu.itba.pod.client.utils;
 
 import com.hazelcast.core.IList;
 
