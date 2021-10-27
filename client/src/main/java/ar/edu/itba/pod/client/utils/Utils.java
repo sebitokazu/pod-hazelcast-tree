@@ -28,10 +28,11 @@ public class Utils {
 
     /* Recibe las options por parametro porque algunas clases tienen mas argumentos. */
     public static CommandLine parseArguments(String[] args, Options options) {
-        options.addOption("city", "Indica con qué dataset de ciudad se desea trabajar. Los únicos valores posibles son BUE y VAN.");
-        options.addOption("addresses", "Refiere a las direcciones IP de los nodos con sus puertos (una o más, separadas por punto y coma).");
-        options.addOption("inPath", "Indica el path donde están los archivos de entrada de barrios y de arboles.");
-        options.addOption("outPath", "Indica el path donde estarán ambos archivos de salida query1.csv y time1.txt.");
+        options.addOption("city", "city", true,"Indica con qué dataset de ciudad se desea trabajar. Los únicos valores posibles son BUE y VAN.");
+        options.addOption("addresses", "addresses", true,"Refiere a las direcciones IP de los nodos con sus puertos (una o más, separadas por punto y coma).");
+        options.addOption("inPath", "inPath", true,"Indica el path donde están los archivos de entrada de barrios y de arboles.");
+        options.addOption("outPath","outPath", true,"Indica el path donde estarán ambos archivos de salida query1.csv y time1.txt.");
+
 
         final CommandLineParser commandLineParser = new DefaultParser();
 

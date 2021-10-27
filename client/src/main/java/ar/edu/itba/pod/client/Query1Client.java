@@ -22,7 +22,7 @@ public class Query1Client {
         HazelcastInstance hazelcastInstance = Utils.clientConfiguration(
                 commandLine.getOptionValue("addresses").split(";"));
 
-        // TODO: Query
+
 
         hazelcastInstance.shutdown();
     }

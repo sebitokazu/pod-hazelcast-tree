@@ -14,11 +14,11 @@ tar -xzf $gzip
 cd "tpe2-g3-client-1.0-SNAPSHOT"
 
 #give execution permission to scripts
-chmod +x quey1.sh
-chmod +x quey2.sh
-chmod +x quey3.sh
-chmod +x quey4.sh
-chmod +x quey5.sh
+chmod +x query1.sh
+chmod +x query2.sh
+chmod +x query3.sh
+chmod +x query4.sh
+chmod +x query5.sh
 
 #go back to parent's project dir
 cd ..
