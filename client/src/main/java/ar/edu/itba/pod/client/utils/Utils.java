@@ -9,6 +9,7 @@ import com.hazelcast.core.HazelcastInstance;
 import org.apache.commons.cli.*;
 
 public class Utils {
+
     public static HazelcastInstance clientConfiguration(String[] addresses) { //TODO: Hay que parametrizar algo mas?
         // Client Config
         ClientConfig clientConfig = new ClientConfig();
