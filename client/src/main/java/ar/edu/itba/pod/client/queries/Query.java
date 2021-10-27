@@ -7,5 +7,4 @@ public interface Query {
 
     void run() throws ExecutionException, InterruptedException, IOException;
     void write(String path) throws IOException;
-    String read();
 }

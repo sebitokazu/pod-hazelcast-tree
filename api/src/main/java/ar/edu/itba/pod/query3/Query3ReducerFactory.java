@@ -9,7 +9,7 @@ import java.util.Set;
 public class Query3ReducerFactory implements ReducerFactory<String,String,Integer> {
     @Override
     public Reducer<String, Integer> newReducer(String s) {
-        return null;
+        return new Query3Reducer();
     }
 
     private class Query3Reducer extends Reducer<String,Integer>{

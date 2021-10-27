@@ -34,7 +34,6 @@ public class Utils {
         options.addOption("inPath", "inPath", true,"Indica el path donde están los archivos de entrada de barrios y de arboles.");
         options.addOption("outPath","outPath", true,"Indica el path donde estarán ambos archivos de salida query1.csv y time1.txt.");
 
-
         final CommandLineParser commandLineParser = new DefaultParser();
 
         try {

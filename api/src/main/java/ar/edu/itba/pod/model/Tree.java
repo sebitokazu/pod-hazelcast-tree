@@ -13,14 +13,13 @@ public class Tree implements DataSerializable {
     private String stdStreet;
     private String commonName;
 
-    public Tree() {
-    }
-
     public Tree(String neighbourhoodName, String stdStreet, String commonName) {
         this.neighbourhoodName = neighbourhoodName;
         this.stdStreet = stdStreet;
         this.commonName = commonName;
     }
+
+    public Tree(){};
 
     @Override
     public void writeData(ObjectDataOutput objectDataOutput) throws IOException {
@@ -57,6 +56,7 @@ public class Tree implements DataSerializable {
     public int hashCode() {
         return Objects.hash(neighbourhoodName, stdStreet, commonName);
     }
+
 
     public String getNeighbourhoodName() {
         return neighbourhoodName;

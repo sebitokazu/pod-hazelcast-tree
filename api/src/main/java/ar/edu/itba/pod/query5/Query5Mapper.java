@@ -7,9 +7,13 @@ import com.hazelcast.mapreduce.Context;
 import com.hazelcast.mapreduce.Mapper;
 
 public class Query5Mapper implements Mapper<ThreeGroup<String, String, String>, Tree, ThreeGroup<String, String, String>, Integer> {
-    @Override
+
+    private String commonName;
+
     public void map(ThreeGroup<String, String, String> s, Tree tree, Context<ThreeGroup<String, String, String>, Integer> context) {
-        ThreeGroup<String, String, String> neighbourhoodAndStreetAndTree = new ThreeGroup<>(tree.getNeighbourhoodName(), tree.getStdStreet(), tree.getCommonName());
-        context.emit(neighbourhoodAndStreetAndTree, 1);
+        if(tree.getCommonName().equals(commonName)) {
+            ThreeGroup<String, String, String> neighbourhoodAndStreetAndTree = new ThreeGroup<>(tree.getNeighbourhoodName(), tree.getStdStreet(), tree.getCommonName());
+            context.emit(neighbourhoodAndStreetAndTree, 1);
+        }
     }
 }

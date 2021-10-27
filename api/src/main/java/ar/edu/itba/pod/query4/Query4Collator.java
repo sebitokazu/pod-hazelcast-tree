@@ -3,12 +3,23 @@ package ar.edu.itba.pod.query4;
 import ar.edu.itba.pod.model.Pair;
 import com.hazelcast.mapreduce.Collator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Query4Collator implements Collator<Map.Entry<String, Integer>, List<Query4Result>> {
+
+    final Comparator<Query4Result> comparator = new Comparator<Query4Result>() {
+        @Override
+        public int compare(Query4Result o1, Query4Result o2) {
+            int groupComparison = o2.getHundredsOfSpecies() - o1.getHundredsOfSpecies();
+            if(groupComparison != 0) {
+                return groupComparison;
+            }
+            else {
+                return o1.getFirstNeighbour().compareTo(o2.getFirstNeighbour());
+            }
+        }
+    };
 
     @Override
     public List<Query4Result> collate(Iterable<Map.Entry<String, Integer>> iterable) {
@@ -20,10 +31,10 @@ public class Query4Collator implements Collator<Map.Entry<String, Integer>, List
                 hundredsOfSpecies.put(speciesAmountInHundreds, new ArrayList<>());
             }
             for(String neighbour : hundredsOfSpecies.get(speciesAmountInHundreds)) {
-                results.add(new Query4Result(speciesAmountInHundreds, neighbour, entry.getKey()));
+                results.add(new Query4Result(speciesAmountInHundreds*100, entry.getKey(), neighbour));
             }
             hundredsOfSpecies.get(speciesAmountInHundreds).add(entry.getKey());
         }
-        return results;
+        return results.stream().sorted(comparator).collect(Collectors.toList());
     }
 }

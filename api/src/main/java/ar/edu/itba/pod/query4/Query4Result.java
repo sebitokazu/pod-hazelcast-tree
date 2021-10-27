@@ -10,4 +10,21 @@ public class Query4Result {
         this.firstNeighbour = firstNeighbour;
         this.secondNeighbour = secondNeighbour;
     }
+
+    public int getHundredsOfSpecies() {
+        return hundredsOfSpecies;
+    }
+
+    public String getFirstNeighbour() {
+        return firstNeighbour;
+    }
+
+    public String getSecondNeighbour() {
+        return secondNeighbour;
+    }
+
+    @Override
+    public String toString() {
+        return this.hundredsOfSpecies + ";" + this.firstNeighbour + ";" + this.secondNeighbour;
+    }
 }

@@ -6,6 +6,7 @@ import ar.edu.itba.pod.client.utils.TreeCsvParser;
 import ar.edu.itba.pod.client.utils.Utils;
 import ar.edu.itba.pod.model.City;
 import ar.edu.itba.pod.model.Tree;
+import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IList;
 import org.apache.commons.cli.CommandLine;
@@ -53,7 +54,7 @@ public class Query1Client {
         }
 
         log.info("Shutting down Hazelcast client");
-
-        hazelcastInstance.shutdown();
+        treeIList.clear();
+        HazelcastClient.shutdownAll();
     }
 }
