@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,6 +34,11 @@ public class TreeCsvParser implements CsvParser<Tree>{
         List<Tree> treeList = stream.stream().skip(1).map(this::parseTree).collect(Collectors.toList());
         treeIList.addAll(treeList);
         return treeIList;
+    }
+
+    @Override
+    public Map<String, Tree> toMap(Path path) throws IOException {
+        return null;
     }
 
 }

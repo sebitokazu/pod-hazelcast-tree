@@ -1,11 +1,18 @@
 package ar.edu.itba.pod.model;
 
+import com.hazelcast.nio.ObjectDataInput;
+import com.hazelcast.nio.ObjectDataOutput;
+import com.hazelcast.nio.serialization.DataSerializable;
+
+import java.io.IOException;
 import java.util.Objects;
 
-public class Pair<K,V> {
+public class Pair<K,V> implements DataSerializable {
 
     private K left;
     private V right;
+
+    public Pair(){}
 
     public Pair(K left, V right){
         this.left = left;
@@ -36,5 +43,17 @@ public class Pair<K,V> {
     @Override
     public String toString() {
         return left+";"+right;
+    }
+
+    @Override
+    public void writeData(ObjectDataOutput objectDataOutput) throws IOException {
+        objectDataOutput.writeObject(left);
+        objectDataOutput.writeObject(right);
+    }
+
+    @Override
+    public void readData(ObjectDataInput objectDataInput) throws IOException {
+        this.left = objectDataInput.readObject();
+        this.right = objectDataInput.readObject();
     }
 }
