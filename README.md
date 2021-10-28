@@ -1,20 +1,20 @@
 # tpe2-g3 - Procesamiento de datos de arbolado publico
 
-Trabajo practico para la materia Programacion de Objetos Distribuidos, utilizando el modelo
-de programacion MapReduce y el framework Hazelcast
+Trabajo práctico para la materia Programación de Objetos Distribuidos, utilizando el modelo
+de programación MapReduce y el framework Hazelcast
 
 
 ## Instrucciones de instalacion
-Tener instalado Maver y correr parado en la carpeta raiz:
+Tener instalado Maven y correr parado en la carpeta raíz:
 ```sh
 $> mvn clean install
 ```
 ### Server
-Para descomprimir el script del server, ejecutar en la carpeta raiz:
+Para descomprimir el script del server, ejecutar en la carpeta raíz:
 ```sh
 $> ./server-untar.sh
 ```
-En caso de conflicto con los permisos en el bash script, asignarle permisos de ejecucion con:
+En caso de conflicto con los permisos en el bash script, asignarle permisos de ejecución con:
 ```sh
 $> chmod +x server-untar.sh
 ```
@@ -26,11 +26,11 @@ $> ./run-server.sh
 ```
 
 ### Clientes
-Para descomprimir los scripts de los clientes, ejecutar en la carpeta raiz:
+Para descomprimir los scripts de los clientes, ejecutar en la carpeta raíz:
 ```sh
 $> mvn clean install
 ```
-En caso de conflicto con los permisos en el bash script, asignarle permisos de ejecucion con:
+En caso de conflicto con los permisos en el bash script, asignarle permisos de ejecución con:
 ```sh
 $> chmod +x client-untar.sh
 ```
@@ -38,9 +38,9 @@ Esto disponibilizará los scripts para correr las queries en client/target/tpe2-
 
 Cambiar a dicho directorio y correr en distintas terminales las queries.
 
-### Parametros
+### Ejemplos de invocación
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=XX -outPath=YY [params]
+$> ./queryX.sh -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=XX -outPath=YY [params]
 ```
 donde
  - queryX es el script que corre la query X.
@@ -55,25 +55,24 @@ separadas por punto y coma)
 
 #### Query 1: Total de árboles por barrio
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=. -outPath=.
+$> ./query1.sh -city=BUE -addresses=127.0.0.1:5702 -inPath=. -outPath=.
 ```
 #### Query 2: Para cada barrio, la especie con mayor cantidad de arboles por habitante
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=. -outPath=.
+$> ./query2.sh -city=VAN -addresses=127.0.0.1:5702 -inPath=. -outPath=.
 ```
 #### Query 3:  Top N barrios con mayor cantidad de especies distintas
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=. -outPath=. -n=N
+$> ./query1.sh -city=BUE -addresses=127.0.0.1:5702 -inPath=. -outPath=. -n=5
 ```
  - -n indica el top N que se retorna en la consulta
 #### Query 4: Pares de barrios que registran la misma cantidad de cientos de especies distintas
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=. -outPath=.
+$> ./query4.sh -city=VAN -addresses=127.0.0.1:5702 -inPath=. -outPath=.
 ```
 #### Query 5: Pares de calles de un barrio X que registran la misma cantidad de decenas de árboles de una especie Y
 ```sh
-$> ./queryX -city=C -addresses="xx.xx.xx.xx:XXXX;yy.yy.yy.yy:YYYY" -inPath=. -outPath=. -neighbourhood="X"
--commonName="Y"
+$> ./query5.sh -city=BUE -addresses=127.0.0.1:5702 -inPath=. -outPath=. -neighbourhood="3" -commonName="Ficus benjamina"
 ```
  - -neighbourhood indica el barrio de filtro de la consulta
  - -commonName indica la especie de arbol de filtro de la consulta
