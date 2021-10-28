@@ -44,6 +44,7 @@ public class Query1Client {
             treeIList = treeParser.loadDataAndReturn(Paths.get(commandLine.getOptionValue("inPath") + "/arboles" + city + ".csv"), treeIList);
         } catch(IOException e) {
             log.error("Error while parsing trees csv file.");
+            return;
         }
 
         fileLog.log(MyFileLoggerTypes.PARSE_CSV_END);
@@ -58,6 +59,7 @@ public class Query1Client {
             fileLog.log(MyFileLoggerTypes.MAP_REDUCE_END);
         } catch (IOException e) {
             log.error("Error on Query1. " + e.getMessage());
+            return;
         }
 
         log.info("Shutting down Hazelcast client");

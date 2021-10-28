@@ -70,6 +70,7 @@ public class Query2Client {
             fileLog.log(MyFileLoggerTypes.MAP_REDUCE_END);
         } catch (ExecutionException | InterruptedException | IOException e) {
             logger.error("Error on Query2. " + e.getMessage());
+            return;
         }
 
         logger.info("Shutting down Hazelcast client");

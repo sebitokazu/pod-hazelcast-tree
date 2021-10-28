@@ -28,15 +28,19 @@ public class Query4Collator implements Collator<Map.Entry<String, Integer>, List
     public List<Query4Result> collate(Iterable<Map.Entry<String, Integer>> iterable) {
         Map<Integer, List<String>> hundredsOfSpecies = new HashMap<>();
         List<Query4Result> results = new ArrayList<>();
+
         for(Map.Entry<String, Integer> entry : iterable) {
             int speciesAmountInHundreds = entry.getValue() / 100;
-            if(!hundredsOfSpecies.containsKey(speciesAmountInHundreds)){
-                hundredsOfSpecies.put(speciesAmountInHundreds, new ArrayList<>());
+            if(speciesAmountInHundreds > 0) {
+                if (!hundredsOfSpecies.containsKey(speciesAmountInHundreds)) {
+                    hundredsOfSpecies.put(speciesAmountInHundreds, new ArrayList<>());
+                }
+
+                for (String neighbour : hundredsOfSpecies.get(speciesAmountInHundreds)) {
+                    results.add(new Query4Result(speciesAmountInHundreds * 100, entry.getKey(), neighbour));
+                }
+                hundredsOfSpecies.get(speciesAmountInHundreds).add(entry.getKey());
             }
-            for(String neighbour : hundredsOfSpecies.get(speciesAmountInHundreds)) {
-                results.add(new Query4Result(speciesAmountInHundreds*100, entry.getKey(), neighbour));
-            }
-            hundredsOfSpecies.get(speciesAmountInHundreds).add(entry.getKey());
         }
         return results.stream().sorted(comparator).collect(Collectors.toList());
     }

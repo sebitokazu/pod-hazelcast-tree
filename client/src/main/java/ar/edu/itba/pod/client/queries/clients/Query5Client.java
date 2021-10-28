@@ -30,10 +30,14 @@ public class Query5Client {
 
         if(commandLine == null)
             return;
+
         String neighbourhood = commandLine.getOptionValue("neighbourhood");
         String commonName = commandLine.getOptionValue("commonName");
 
-        //TODO: neighbourhood y commonName --> chequear que ambos sean no vacios
+        if(neighbourhood == null || commonName == null || neighbourhood.equals("") || commonName.equals("")) {
+            log.error("Invalid parameter neighbourhood or common_name.");
+            return;
+        }
 
         HazelcastInstance hazelcastInstance = Utils.clientConfiguration(
                 commandLine.getOptionValue("addresses").split(";"));
@@ -51,12 +55,12 @@ public class Query5Client {
             treeIList = treeParser.loadDataAndReturn(Paths.get(commandLine.getOptionValue("inPath") + "/arboles" + city + ".csv"), treeIList);
         } catch(IOException e) {
             log.error("Error while parsing trees csv file.");
+            return;
         }
 
         fileLog.log(MyFileLoggerTypes.PARSE_CSV_END);
 
         Query5 query5 = new Query5(treeIList, hazelcastInstance, commandLine.getOptionValue("outPath") + "/query5.csv", neighbourhood, commonName);
-
 
         fileLog.log(MyFileLoggerTypes.MAP_REDUCE_START);
 
@@ -66,6 +70,7 @@ public class Query5Client {
             fileLog.log(MyFileLoggerTypes.MAP_REDUCE_END);
         } catch (IOException | ExecutionException | InterruptedException e) {
             log.error("Error on query5. " + e.getMessage());
+            return;
         }
 
         log.info("Shutting down Hazelcast client");

@@ -36,8 +36,14 @@ public class Query3Client {
             limit = Integer.parseInt(commandLine.getOptionValue("n"));
         } catch(NumberFormatException e) {
             log.error("Invalid parameter n.");
-            throw e;
+            return;
         }
+
+        if(limit <= 0) {
+            log.error("n must be higher than 0.");
+            return;
+        }
+
         HazelcastInstance hazelcastInstance = Utils.clientConfiguration(
                 commandLine.getOptionValue("addresses").split(";"));
 
@@ -54,6 +60,7 @@ public class Query3Client {
             treeIList = treeParser.loadDataAndReturn(Paths.get(commandLine.getOptionValue("inPath") + "/arboles" + city + ".csv"), treeIList);
         } catch(IOException e) {
             log.error("Error while parsing trees csv file.");
+            return;
         }
 
         fileLog.log(MyFileLoggerTypes.PARSE_CSV_END);
@@ -67,6 +74,7 @@ public class Query3Client {
             fileLog.log(MyFileLoggerTypes.MAP_REDUCE_END);
         } catch (IOException | ExecutionException | InterruptedException e) {
             log.error("Error on Query3. " + e.getMessage());
+            return;
         }
 
         log.info("Shutting down Hazelcast client");
