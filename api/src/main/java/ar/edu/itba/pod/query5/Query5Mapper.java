@@ -6,14 +6,19 @@ import ar.edu.itba.pod.model.Tree;
 import com.hazelcast.mapreduce.Context;
 import com.hazelcast.mapreduce.Mapper;
 
-public class Query5Mapper implements Mapper<ThreeGroup<String, String, String>, Tree, ThreeGroup<String, String, String>, Integer> {
+public class Query5Mapper implements Mapper<String, Tree, String, Integer> {
 
-    private String commonName;
+    private final String commonName;
+    private final String neighbourhoodName;
 
-    public void map(ThreeGroup<String, String, String> s, Tree tree, Context<ThreeGroup<String, String, String>, Integer> context) {
-        if(tree.getCommonName().equals(commonName)) {
-            ThreeGroup<String, String, String> neighbourhoodAndStreetAndTree = new ThreeGroup<>(tree.getNeighbourhoodName(), tree.getStdStreet(), tree.getCommonName());
-            context.emit(neighbourhoodAndStreetAndTree, 1);
+    public Query5Mapper(String neighbourhoodName,String commonName){
+        this.neighbourhoodName = neighbourhoodName;
+        this.commonName = commonName;
+    }
+
+    public void map(String s, Tree tree, Context<String, Integer> context) {
+        if(tree.getCommonName().equals(commonName) && tree.getNeighbourhoodName().equals(neighbourhoodName)) {
+            context.emit(tree.getStdStreet(), 1);
         }
     }
 }

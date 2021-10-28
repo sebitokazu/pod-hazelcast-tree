@@ -5,9 +5,9 @@ import ar.edu.itba.pod.query1.Query1CombinerFactory;
 import com.hazelcast.mapreduce.Combiner;
 import com.hazelcast.mapreduce.CombinerFactory;
 
-public class Query5CombinerFactory implements CombinerFactory<ThreeGroup<String, String, String>, Integer, Integer> {
+public class Query5CombinerFactory implements CombinerFactory<String, Integer, Integer> {
     @Override
-    public Combiner<Integer, Integer> newCombiner(ThreeGroup<String, String, String> stringStringStringThreeGroup) {
+    public Combiner<Integer, Integer> newCombiner(String streetStd) {
         return new Query5CombinerFactory.Query5Combiner();
     }
 

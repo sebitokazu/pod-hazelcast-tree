@@ -7,8 +7,13 @@ public class Query4Result {
 
     public Query4Result(int hundredsOfSpecies, String firstNeighbour, String secondNeighbour) {
         this.hundredsOfSpecies = hundredsOfSpecies;
-        this.firstNeighbour = firstNeighbour;
-        this.secondNeighbour = secondNeighbour;
+        if(firstNeighbour.compareTo(secondNeighbour)<0) {
+            this.firstNeighbour = firstNeighbour;
+            this.secondNeighbour = secondNeighbour;
+        }else {
+            this.firstNeighbour = secondNeighbour;
+            this.secondNeighbour = firstNeighbour;
+        }
     }
 
     public int getHundredsOfSpecies() {

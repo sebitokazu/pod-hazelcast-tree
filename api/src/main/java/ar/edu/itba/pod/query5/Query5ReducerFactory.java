@@ -10,9 +10,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Query5ReducerFactory implements ReducerFactory<ThreeGroup<String, String, String>, Integer, Integer> {
+public class Query5ReducerFactory implements ReducerFactory<String, Integer, Integer> {
     @Override
-    public Reducer<Integer, Integer> newReducer(ThreeGroup<String, String, String> stringStringStringThreeGroup) {
+    public Reducer<Integer, Integer> newReducer(String string) {
         return new Query5Reducer();
     }
 

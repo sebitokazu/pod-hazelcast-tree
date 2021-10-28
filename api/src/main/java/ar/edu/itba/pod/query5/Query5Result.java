@@ -7,7 +7,29 @@ public class Query5Result {
 
     public Query5Result(int tensOfSpecies, String firstStreet, String secondStreet) {
         this.tensOfSpecies = tensOfSpecies;
-        this.firstStreet = firstStreet;
-        this.secondStreet = secondStreet;
+        if(firstStreet.compareTo(secondStreet)>=0){
+            this.firstStreet = firstStreet;
+            this.secondStreet = secondStreet;
+        }else {
+            this.firstStreet = secondStreet;
+            this.secondStreet = firstStreet;
+        }
+    }
+
+    public int getTensOfSpecies() {
+        return tensOfSpecies;
+    }
+
+    public String getFirstStreet() {
+        return firstStreet;
+    }
+
+    public String getSecondStreet() {
+        return secondStreet;
+    }
+
+    @Override
+    public String toString() {
+        return tensOfSpecies + ";" + firstStreet + ";" + secondStreet;
     }
 }
