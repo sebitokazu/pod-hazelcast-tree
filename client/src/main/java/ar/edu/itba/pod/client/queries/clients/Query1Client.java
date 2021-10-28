@@ -1,10 +1,7 @@
 package ar.edu.itba.pod.client.queries.clients;
 
 import ar.edu.itba.pod.client.queries.Query1;
-import ar.edu.itba.pod.client.utils.CsvParser;
-import ar.edu.itba.pod.client.utils.TreeCsvParser;
-import ar.edu.itba.pod.client.utils.Utils;
-import ar.edu.itba.pod.model.City;
+import ar.edu.itba.pod.client.utils.*;
 import ar.edu.itba.pod.model.Tree;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IList;
@@ -19,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Query1Client {
     private static final Logger log = LoggerFactory.getLogger(Query1Client.class);
+    private static final MyFileLogger fileLog = new MyFileLogger("text1.txt");
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         log.info("hz-config Query1Client Starting ...");
@@ -38,16 +36,25 @@ public class Query1Client {
 
         IList<Tree> treeIList = hazelcastInstance.getList("trees");
         final CsvParser<Tree> treeParser = new TreeCsvParser(city);
+
+        fileLog.log(MyFileLoggerTypes.PARSE_CSV_START);
+
         try {
             treeIList = treeParser.loadDataAndReturn(Paths.get(commandLine.getOptionValue("inPath") + "/arboles" + city + ".csv"), treeIList);
         } catch(IOException e) {
             log.error("Error while parsing trees csv file.");
         }
 
+        fileLog.log(MyFileLoggerTypes.PARSE_CSV_END);
+
         Query1 query1 = new Query1(hazelcastInstance, treeIList, commandLine.getOptionValue("outPath") + "/query1.csv");
+
+        fileLog.log(MyFileLoggerTypes.MAP_REDUCE_START);
+
         try {
             query1.run();
             log.info("Finished running Query1");
+            fileLog.log(MyFileLoggerTypes.MAP_REDUCE_END);
         } catch (IOException e) {
             log.error("Error on Query1. " + e.getMessage());
         }
