@@ -8,7 +8,7 @@ import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Query2ReducerFactory1 implements ReducerFactory<String,String, Pair<String,Integer>> {
+public class Query2ReducerFactory implements ReducerFactory<String,String, Pair<String,Integer>> {
     @Override
     public Reducer<String, Pair<String, Integer>> newReducer(String s) {
         return new Query2Reducer1();

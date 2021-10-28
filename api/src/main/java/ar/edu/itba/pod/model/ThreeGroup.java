@@ -50,4 +50,9 @@ public class ThreeGroup<K, V, S> {
     public boolean equalsMiddle(V v){
         return this.getMiddle().equals(v);
     }
+
+    @Override
+    public String toString() {
+        return left+";"+middle+";"+right;
+    }
 }
