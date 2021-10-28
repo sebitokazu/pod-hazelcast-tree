@@ -55,7 +55,6 @@ public class HazelcastTest {
         CsvParser<Tree> treeParser = new TreeCsvParser("BUE");
         treeIList = treeParser.loadDataAndReturn(Paths.get("src","test","resources", trees_csv_path), treeIList);
 
-        // TODO: Estamos parseando el csv de barrios en el @Before y solo lo usa la query 2
         CsvParser<Neighbourhood> neighbourhoodCsvParser = new NeighbourhoodCsvParser();
         neighbourhoodMap = neighbourhoodCsvParser.toMap(Paths.get("src","test","resources", neighbourhood_csv_path));
     }

@@ -10,7 +10,7 @@ import org.apache.commons.cli.*;
 
 public class Utils {
 
-    public static HazelcastInstance clientConfiguration(String[] addresses) { //TODO: Hay que parametrizar algo mas?
+    public static HazelcastInstance clientConfiguration(String[] addresses) {
         // Client Config
         ClientConfig clientConfig = new ClientConfig();
 

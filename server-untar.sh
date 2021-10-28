@@ -14,7 +14,7 @@ tar -xzf $gzip
 cd "tpe2-g3-server-1.0-SNAPSHOT"
 
 #give execution permission to scripts
-chmod +x run-registry.sh #TODO: Creo que ese archivo hay que eliminarlo
+chmod +x run-registry.sh
 chmod +x run-server.sh
 
 #go back to parent's project dir
