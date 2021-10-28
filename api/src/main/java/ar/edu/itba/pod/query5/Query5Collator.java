@@ -28,7 +28,7 @@ public class Query5Collator implements Collator<Map.Entry<String, Integer>, List
         List<Query5Result> results = new ArrayList<>();
 
         for(Map.Entry<String,Integer> entry : iterable){
-            int tens = entry.getValue() / 10;
+            int tens = entry.getValue() - entry.getValue() % 10;
             if(tens > 0) {
                 if (!tensToStreetList.containsKey(tens))
                     tensToStreetList.put(tens, new ArrayList<>());

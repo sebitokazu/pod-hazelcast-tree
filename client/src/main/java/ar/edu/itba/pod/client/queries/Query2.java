@@ -60,9 +60,4 @@ public class Query2 implements Query{
         Path outPath = Paths.get(path);
         Files.write(outPath, resLines);
     }
-
-    @Override
-    public String read() {
-        return null;
-    }
 }
