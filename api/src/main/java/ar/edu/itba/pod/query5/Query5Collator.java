@@ -14,7 +14,12 @@ public class Query5Collator implements Collator<Map.Entry<String, Integer>, List
         int tensComparison = q2.getTensOfSpecies() - q1.getTensOfSpecies();
         if(tensComparison != 0)
             return tensComparison;
-        else return q1.getFirstStreet().compareTo(q2.getFirstStreet());
+        else{
+            int firstStreetComparison = q1.getFirstStreet().compareTo(q2.getFirstStreet());
+            if(firstStreetComparison!=0)
+                return firstStreetComparison;
+            else return q1.getSecondStreet().compareTo(q2.getSecondStreet());
+        }
     };
 
     @Override

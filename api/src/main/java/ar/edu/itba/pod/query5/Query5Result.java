@@ -7,7 +7,7 @@ public class Query5Result {
 
     public Query5Result(int tensOfSpecies, String firstStreet, String secondStreet) {
         this.tensOfSpecies = tensOfSpecies;
-        if(firstStreet.compareTo(secondStreet)>=0){
+        if(firstStreet.compareTo(secondStreet) < 0){
             this.firstStreet = firstStreet;
             this.secondStreet = secondStreet;
         }else {

@@ -16,7 +16,10 @@ public class Query4Collator implements Collator<Map.Entry<String, Integer>, List
                 return groupComparison;
             }
             else {
-                return o1.getFirstNeighbour().compareTo(o2.getFirstNeighbour());
+                int firstNeighborComparator = o1.getFirstNeighbour().compareTo(o2.getFirstNeighbour());
+                if(firstNeighborComparator != 0)
+                    return firstNeighborComparator;
+                else return o1.getSecondNeighbour().compareTo(o2.getSecondNeighbour());
             }
         }
     };
