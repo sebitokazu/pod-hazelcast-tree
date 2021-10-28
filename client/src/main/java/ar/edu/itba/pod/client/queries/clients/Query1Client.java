@@ -17,7 +17,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Query1Client {
     private static final Logger log = LoggerFactory.getLogger(Query1Client.class);
-    private static final MyFileLogger fileLog = new MyFileLogger("text1.txt");
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         log.info("hz-config Query1Client Starting ...");
@@ -27,6 +26,8 @@ public class Query1Client {
 
         if(commandLine == null)
             return;
+
+        MyFileLogger fileLog = new MyFileLogger(commandLine.getOptionValue("outPath") + "/text1.txt");
 
         HazelcastInstance hazelcastInstance = Utils.clientConfiguration(
                 commandLine.getOptionValue("addresses").split(";"));

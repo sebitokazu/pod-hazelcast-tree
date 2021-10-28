@@ -18,7 +18,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Query4Client {
     private static final Logger log = LoggerFactory.getLogger(Query4Client.class);
-    private static final MyFileLogger fileLog = new MyFileLogger("text4.txt");
 
     public static void main(String[] args) {
         log.info("hz-config Query4Client Starting ...");
@@ -28,6 +27,8 @@ public class Query4Client {
 
         if(commandLine == null)
             return;
+
+        MyFileLogger fileLog = new MyFileLogger(commandLine.getOptionValue("outPath") + "/text4.txt");
 
         HazelcastInstance hazelcastInstance = Utils.clientConfiguration(
                 commandLine.getOptionValue("addresses").split(";"));

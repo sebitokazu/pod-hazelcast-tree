@@ -17,7 +17,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Query3Client {
     private static final Logger log = LoggerFactory.getLogger(Query3Client.class);
-    private static final MyFileLogger fileLog = new MyFileLogger("text3.txt");
 
     public static void main(String[] args) {
         log.info("hz-config Query3Client Starting ...");
@@ -30,6 +29,8 @@ public class Query3Client {
 
         if(commandLine == null)
             return;
+
+        MyFileLogger fileLog = new MyFileLogger(commandLine.getOptionValue("outPath") + "/text3.txt");
 
         int limit = 0;
         try {

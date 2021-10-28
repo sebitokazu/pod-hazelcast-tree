@@ -16,7 +16,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Query5Client {
     private static final Logger log = LoggerFactory.getLogger(Query5Client.class);
-    private static final MyFileLogger fileLog = new MyFileLogger("text5.txt");
 
     public static void main(String[] args) {
         log.info("hz-config Query5Client Starting ...");
@@ -30,6 +29,8 @@ public class Query5Client {
 
         if(commandLine == null)
             return;
+
+        MyFileLogger fileLog = new MyFileLogger(commandLine.getOptionValue("outPath") + "/text5.txt");
 
         String neighbourhood = commandLine.getOptionValue("neighbourhood");
         String commonName = commandLine.getOptionValue("commonName");
