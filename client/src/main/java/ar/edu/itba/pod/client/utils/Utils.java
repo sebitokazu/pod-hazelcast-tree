@@ -37,7 +37,10 @@ public class Utils {
         final CommandLineParser commandLineParser = new DefaultParser();
 
         try {
-            return commandLineParser.parse(options, args);
+            CommandLine toReturn = commandLineParser.parse(options, args);
+            if(!(toReturn.getOptionValue("city").equals("BUE") || toReturn.getOptionValue("city").equals("VAN")))
+                return null;
+            return toReturn;
         } catch (ParseException e) {
             System.out.println("Invalid argument: " + e.getMessage());
             return null;
