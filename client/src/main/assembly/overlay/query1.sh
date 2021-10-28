@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -cp 'lib/jars/*' "ar.edu.itba.pod.client.Query1Client" $*
+java -cp 'lib/jars/*' "ar.edu.itba.pod.client.queries.clients.Query1Client" $*
