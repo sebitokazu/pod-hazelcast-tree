@@ -127,7 +127,7 @@ public class HazelcastTest {
         Assert.assertEquals(lines.get(2), "200;10;12");
         boolean a = lines.contains("200;10;13") && lines.contains("200;10;15") && lines.contains("200;13;15") && !lines.contains("200;15;13");
         Assert.assertTrue(a);
-        Assert.assertFalse(lines.contains("200;10;12"));
+        Assert.assertFalse(lines.contains("200;10;10"));
         Assert.assertEquals(lines.get(lines.size()-1), "100;5;6");
     }
 
